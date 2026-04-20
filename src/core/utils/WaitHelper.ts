@@ -1,4 +1,10 @@
+import { Page } from '@playwright/test';
+
 export class WaitHelper {
+  static async waitForNetworkIdle(page: Page): Promise<void> {
+    await page.waitForLoadState('networkidle');
+  }
+
   static async waitForCondition(
     condition: () => boolean | Promise<boolean>,
     timeout = 5_000,

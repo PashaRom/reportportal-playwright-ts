@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { WaitHelper } from '@core/utils/WaitHelper';
 
 export abstract class BasePage {
   constructor(protected readonly page: Page) {}
@@ -8,7 +9,7 @@ export abstract class BasePage {
   }
 
   async waitForPageLoad(): Promise<void> {
-    await this.page.waitForLoadState('networkidle');
+    await WaitHelper.waitForNetworkIdle(this.page);
   }
 
   getTitle(): Promise<string> {
