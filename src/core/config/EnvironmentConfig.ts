@@ -13,4 +13,5 @@ export const EnvironmentConfig = {
   retryCount: Number(process.env.RETRY_COUNT ?? 3),
   userToken: process.env.USER_TOKEN ?? '',
   userName: process.env.USER_NAME ?? '',
+  projectName: process.env.PROJECT_NAME ?? '',
 } as const;

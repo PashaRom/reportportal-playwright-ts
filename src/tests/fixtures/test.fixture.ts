@@ -4,12 +4,14 @@ import { EnvironmentConfig } from '@core/config/EnvironmentConfig';
 import { LocalStorageHelper } from '@core/utils/LocalStorageHelper';
 import { LoginPage } from '@business/pages/login/LoginPage';
 import { ProjectsPage } from '@business/pages/projects/ProjectsPage';
+import { DashboardPage } from '@business/pages/dashboard/DashboardPage';
 
 type TestFixtures = {
   loginPage: LoginPage;
   storageAuth: void;
   projectsPage: ProjectsPage;
   localStorageHelper: LocalStorageHelper;
+  dashboardPage: DashboardPage;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -28,6 +30,10 @@ export const test = base.extend<TestFixtures>({
 
   localStorageHelper: async ({ page, storageAuth: _ }, use) => {
     await use(new LocalStorageHelper(page));
+  },
+
+  dashboardPage: async ({ page, storageAuth: _ }, use) => {
+    await use(new DashboardPage(page));
   },
 });
 
