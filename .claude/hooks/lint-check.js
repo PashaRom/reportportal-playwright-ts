@@ -1,5 +1,10 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
 'use strict';
+
+const { execSync } = require('child_process');
+const path = require('path');
+const cwd = path.resolve(__dirname, '../..');
 
 const chunks = [];
 process.stdin.on('data', (d) => chunks.push(d));
@@ -9,9 +14,6 @@ process.stdin.on('end', () => {
 
   // Only run for TypeScript/JavaScript files
   if (!/\.(ts|tsx|js|mjs|cjs)$/.test(filePath)) process.exit(0);
-
-  const { execSync } = require('child_process');
-  const cwd = 'C:\\Users\\pavel_romash1\\Projects\\ReportPortalTypeScript';
 
   const issues = [];
 
