@@ -9,7 +9,7 @@ type BaseFixtures = {
 
 export const test = base.extend<BaseFixtures>({
   // eslint-disable-next-line no-empty-pattern
-  baseUrl: async ({}: Record<string, never>, use) => {
+  baseUrl: async ({}, use) => {
     await use(EnvironmentConfig.baseUrl);
   },
 
