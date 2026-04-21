@@ -5,6 +5,7 @@ import { LocalStorageHelper } from '@core/utils/LocalStorageHelper';
 import { LoginPage } from '@business/pages/login/LoginPage';
 import { ProjectsPage } from '@business/pages/projects/ProjectsPage';
 import { DashboardPage } from '@business/pages/dashboard/DashboardPage';
+import { DashboardApi } from '@business/api/DashboardApi';
 
 type TestFixtures = {
   loginPage: LoginPage;
@@ -12,6 +13,7 @@ type TestFixtures = {
   projectsPage: ProjectsPage;
   localStorageHelper: LocalStorageHelper;
   dashboardPage: DashboardPage;
+  dashboardApi: DashboardApi;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -24,16 +26,23 @@ export const test = base.extend<TestFixtures>({
     await use();
   },
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   projectsPage: async ({ page, storageAuth: _ }, use) => {
     await use(new ProjectsPage(page));
   },
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   localStorageHelper: async ({ page, storageAuth: _ }, use) => {
     await use(new LocalStorageHelper(page));
   },
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   dashboardPage: async ({ page, storageAuth: _ }, use) => {
     await use(new DashboardPage(page));
+  },
+
+  dashboardApi: async ({ httpClient }, use) => {
+    await use(new DashboardApi(httpClient, EnvironmentConfig.apiKey));
   },
 });
 
