@@ -9,8 +9,6 @@ if (!process.env.BASE_URL) {
 export const EnvironmentConfig = {
   baseUrl: process.env.BASE_URL,
   apiBaseUrl: process.env.API_BASE_URL ?? `${process.env.BASE_URL}/api/v1`,
-  defaultTimeout: Number(process.env.DEFAULT_TIMEOUT ?? 30_000),
-  retryCount: Number(process.env.RETRY_COUNT ?? 3),
   userName: process.env.USER_NAME ?? '',
   projectName: process.env.PROJECT_NAME ?? '',
   apiKey: process.env.API_KEY ?? '',

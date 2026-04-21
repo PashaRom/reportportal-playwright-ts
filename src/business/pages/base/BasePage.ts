@@ -12,7 +12,4 @@ export abstract class BasePage {
     await WaitHelper.waitForNetworkIdle(this.page);
   }
 
-  getTitle(): Promise<string> {
-    return this.page.title();
-  }
 }

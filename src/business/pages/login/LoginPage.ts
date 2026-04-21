@@ -5,7 +5,6 @@ export class LoginPage extends BasePage {
   private readonly usernameInput = this.page.locator('[name="login"]');
   private readonly passwordInput = this.page.locator('[name="password"]');
   private readonly submitButton = this.page.locator('[type="submit"]');
-  private readonly errorMessage = this.page.locator('.login__error');
   private readonly epamLoginButton = this.page.getByRole('button', { name: /login with epam/i });
 
   constructor(page: Page) {
@@ -14,16 +13,6 @@ export class LoginPage extends BasePage {
 
   async goto(baseUrl: string): Promise<void> {
     await this.navigate(`${baseUrl}/ui/#login`);
-  }
-
-  async login(username: string, password: string): Promise<void> {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.submitButton.click();
-  }
-
-  async getErrorText(): Promise<string> {
-    return this.errorMessage.innerText();
   }
 
   async isUsernameInputVisible(): Promise<boolean> {

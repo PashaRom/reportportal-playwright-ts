@@ -30,15 +30,6 @@ export class DashboardApi {
     return response.json();
   }
 
-  async getById(projectName: string, id: number): Promise<DashboardResource> {
-    const response = await this.http.get(
-      `${this.baseUrl}/${projectName}/dashboard/${id}`,
-      undefined,
-      this.authHeader,
-    );
-    return response.json();
-  }
-
   async findByName(projectName: string, name: string): Promise<DashboardResource | undefined> {
     const response = await this.http.get(
       `${this.baseUrl}/${projectName}/dashboard`,
