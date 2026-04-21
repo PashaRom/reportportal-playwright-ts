@@ -7,7 +7,22 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    [
+      '@reportportal/agent-js-playwright',
+      {
+        apiKey: EnvironmentConfig.apiKey,
+        endpoint: EnvironmentConfig.rpEndpoint,
+        project: EnvironmentConfig.projectName,
+        launch: EnvironmentConfig.rpLaunchName,
+        attributes: [{ value: 'playwright' }],
+        description: 'Automated Playwright test run',
+        includeTestSteps: true,
+        skippedIssue: false,
+      },
+    ],
+  ],
   use: {
     baseURL: EnvironmentConfig.baseUrl,
     trace: 'on-first-retry',

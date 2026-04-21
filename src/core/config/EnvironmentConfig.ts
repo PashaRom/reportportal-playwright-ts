@@ -15,4 +15,6 @@ export const EnvironmentConfig = {
   userName: process.env.USER_NAME ?? '',
   projectName: process.env.PROJECT_NAME ?? '',
   apiKey: process.env.API_KEY ?? '',
+  rpEndpoint: process.env.RP_ENDPOINT ?? `${process.env.BASE_URL}/api/v2`,
+  rpLaunchName: process.env.RP_LAUNCH_NAME ?? 'Playwright Tests',
 } as const;
