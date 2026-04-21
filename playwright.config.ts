@@ -15,7 +15,7 @@ export default defineConfig({
         apiKey: EnvironmentConfig.apiKey,
         endpoint: EnvironmentConfig.rpEndpoint,
         project: EnvironmentConfig.projectName,
-        launch: EnvironmentConfig.rpLaunchName,
+        launch: `${EnvironmentConfig.rpLaunchName} ${new Date().toISOString().replace('T', ' ').slice(0, 19)}`,
         attributes: [{ value: 'playwright' }],
         description: 'Automated Playwright test run',
         includeTestSteps: true,

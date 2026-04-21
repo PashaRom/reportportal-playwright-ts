@@ -1,7 +1,8 @@
 import { Page } from '@playwright/test';
 import { WaitHelper } from '@core/utils/WaitHelper';
 
-export async function applyStorageAuth(page: Page, token: string, baseUrl: string): Promise<void> {
+export async function applyStorageAuth(page: Page, apiKey: string, baseUrl: string): Promise<void> {
+  const token = JSON.stringify({ type: 'bearer', value: apiKey });
   await page.goto(baseUrl);
   await page.evaluate(
     ({ token, activityTimestamp }) => {

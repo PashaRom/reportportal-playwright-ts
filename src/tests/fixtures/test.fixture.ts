@@ -22,7 +22,7 @@ export const test = base.extend<TestFixtures>({
   },
 
   storageAuth: async ({ page, baseUrl }, use) => {
-    await applyStorageAuth(page, EnvironmentConfig.userToken, baseUrl);
+    await applyStorageAuth(page, EnvironmentConfig.apiKey, baseUrl);
     await use();
   },
 
