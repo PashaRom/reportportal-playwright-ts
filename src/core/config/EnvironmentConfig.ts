@@ -14,4 +14,5 @@ export const EnvironmentConfig = {
   userToken: process.env.USER_TOKEN ?? '',
   userName: process.env.USER_NAME ?? '',
   projectName: process.env.PROJECT_NAME ?? '',
+  apiKey: process.env.API_KEY ?? '',
 } as const;
